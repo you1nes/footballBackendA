@@ -1,6 +1,4 @@
 
-@you1nes
-
 var playerModel= require('../models/playerModel');
 var teamModel= require('../models/teamModel');
 

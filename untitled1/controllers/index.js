@@ -1,16 +1,11 @@
-module.exports = {
-    getHomePage: (req, res) => {
-        let query = "SELECT * FROM `players` ORDER BY id ASC"; // query database to get all the players
+var fs=require('fs');
+var path=require('path');
 
-        // execute query
-        db.query(query, (err, result) => {
-            if (err) {
-                res.redirect('/');
-            }
-            res.render('index.ejs', {
-                title: Welcome to Socka | View Players
-                ,players: result
-            });
-        });
-    },
-};
+var files=fs.readdirSync(__dirname);
+
+files.forEach(function(file){
+    var filename=path.basename(file,'.js');
+    if(filename!=="index"){
+        exports[filename]=require('./'+filename);
+    }
+})

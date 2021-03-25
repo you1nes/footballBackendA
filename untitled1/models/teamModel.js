@@ -15,7 +15,7 @@
     }
     teamModel.insertTeam=function(newTeam,result)
     {
-        let stmt = "INSERT INTO team (nom,pays,stade) VALUES (?,?,?,?,?)";
+        let stmt = "INSERT INTO team (nom,pays,stade) VALUES (?,?,?)";
         let tab = [newTeam.nom,newTeam.pays,newTeam.stade];
         sql.query(stmt,tab,function(err,res){
             if(err){
