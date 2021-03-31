@@ -4,12 +4,20 @@ var teamModel= require('../models/teamModel');
 
 var playerController=function(){}
 
+playerController.add = function(req, res, next) {
+    playerModel.getAllPlayer(function (err, users) {
+        res.render('player/add', {title: 'Add Player'});
+    });
+}
+
+
 playerController.index=function(req,res,next){
-    playerModel.getAllPlayer(function(err,animals){
+
+    playerModel.getAllPlayer(function(err,players){
         if(err){
             throw err;
         }else{
-            res.render('animal/index',{title:'Animal Listing',animals:animals});
+            res.render('player/index',{title:'Player Listing',players:players});
         }
 
     });

@@ -19,7 +19,7 @@ app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 
 app.use(express.static(path.join(__dirname, 'public')));
-let routes = require ('./mesroutes');
+let routes = require ('./routes/route');
 app.use('/',routes);
 
 app.use(express.json());
@@ -39,7 +39,7 @@ app.use(function (err, req, res, next) {
     res.render('error');
 });
 
-app.use(flash());
+//app.use(flash());
 app.use(bodyParser.json());
 app.listen(8080, function () {
     console.log("App started at port 8080!!");

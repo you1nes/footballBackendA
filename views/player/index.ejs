@@ -1,0 +1,65 @@
+<%- include ../layouts/header.ejs %>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel panel-default">
+            <div class="panel-heading"><%= title %><a href="/player/add" class= "pull-right"><i class="fa fa-plus fa-fw"></i>Inscrire un player</a></div>
+            <div class="panel-body">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Nom du player</th>
+                        <th>prenom du player</th>
+                        <th>Age du player</th>
+                        <th>Nationalité du player</th>
+                        <th>image </th>
+                        <th>Team</th>
+
+                        <th>EDIT</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <% if (players) { %>
+                        <% players.forEach(function(player){ %>
+                            <tr>
+                                <td>
+                                    <%= player.nom %>
+                                </td>
+                                <td>
+                                    <%= player.prenom %>
+                                </td>
+                                <td>
+                                    <%= player.age %>
+                                </td>
+                                <td>
+                                    <%= player.nationality %>
+                                </td>
+                                <td>
+                                    <%= player.image %>
+                                </td>
+                                <td>
+                                    <%= player.idTeam %>
+                                </td>
+
+                                <td>
+                                    <% console.log("ID:"+player.idPlayer); %>
+                                    <a href="/animal/edit/<%= player.idPlayer %>"><i class="fa fa-edit"></i></a>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-2 col-sm-10">
+                                            <a href="/animal/delete/<%= player.idPlayer %>"><button type="button" class="btn btn-default">delete</button></a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        <% }) %>
+                    <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<%- include ../layouts/footer.ejs %>
