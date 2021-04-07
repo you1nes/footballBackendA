@@ -27,7 +27,7 @@
         });
     }
     teamModel.findTeamById=function(teamId,result){
-        sql.query("SELECT * from animal WHERE idteam ="+teamId,function(err,rows){
+        sql.query("SELECT * from team WHERE idteam ="+teamId,function(err,rows){
             if(err)
                 throw err;
 
@@ -46,8 +46,6 @@
         let stmt = "UPDATE  team SET nom = ? ,pays = ? ,stade = ? where idTeam ="+teamId;
         let tab = [newTeam.nom,newTeam.pays,newTeam.stade];
         sql.query(stmt,tab,function(err,rows){
-            if(err)
-                result(err);
 
             return result(rows);
 

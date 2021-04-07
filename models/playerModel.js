@@ -4,7 +4,7 @@
 
         }
         playerModel.getAllPlayer=function(result){
-                sql.query("SELECT player.idPlayer,player.nom,player.prenom,player.age,player.nationality,player.image,team.idTeam FROM player JOIN team  ",function(err,res){
+                sql.query("SELECT player.idPlayer,player.nom,player.prenom,player.age,player.nationality,player.image,player.idTeam FROM player",function(err,res){
                         if(err) {
                                 return result(err,null);
                         }
@@ -15,7 +15,7 @@
         }
         playerModel.insertPlayer=function(newPlayer,result)
         {
-                let stmt = "INSERT INTO player (nom,prenom,age,nationality,image,idTeam) VALUES (?,?,?,?,?)";
+                let stmt = "INSERT INTO player (nom,prenom,age,nationality,image,idTeam) VALUES (?,?,?,?,?,?)";
                 let tab = [newPlayer.nom,newPlayer.prenom,newPlayer.age,newPlayer.nationality,newPlayer.image,newPlayer.idTeam];
                 sql.query(stmt,tab,function(err,res){
                         if(err){
@@ -46,10 +46,6 @@
                 let stmt = "UPDATE  player SET prenom = ? ,nom = ? ,age = ?,nationality = ?,image = ?,idTeam = ? where idPlayer ="+playerId;
                 let tab = [newPlayer.nom,newPlayer.prenom,newPlayer.age,newPlayer.nationality,newPlayer.image,newPlayer.idTeam];
                 sql.query(stmt,tab,function(err,rows){
-                        if(err)
-                                result(err);
-
-                        return result(rows);
 
                 });
         }

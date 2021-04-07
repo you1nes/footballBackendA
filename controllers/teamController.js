@@ -6,7 +6,7 @@ var teamController=function(){}
 
 teamController.add = function(req, res, next) {
     teamModel.getAllTeam(function (err, users) {
-        res.render('team/add', {title: 'Add team'});
+        res.render('team/addteam', {title: 'Add team'});
     });
 }
 
@@ -32,8 +32,17 @@ teamController.save=function(req,res){
     req.assert('pays', 'pays is required').notEmpty();
     req.assert('stade', 'stade is required').notEmpty();
 
-    req.flash('error', err_msg);
-    res.redirect('/team/save/'+teamId);
+    var errors = req.validationErrors();
+    var newTeam={
+        nom:req.sanitize('nom').escape().trim(),
+        pays:req.sanitize('pays').escape().trim(),
+        stade:req.sanitize('stade').escape().trim()
+    }
+    teamModel.insertTeam(newTeam,function(err){
+
+
+        res.redirect('/team');
+    });
 
 
 
@@ -43,10 +52,9 @@ teamController.edit=function(req,res){
     console.log("FAUTEEE     :   "+teamId);
     teamModel.findTeamById(teamId,function(result){
         if(result==null){
-            req.flash('error','Sorry the team doesnot exists!!');
             res.redirect('/team');
         }else{
-                    res.render('team/edit',{title: 'team '});
+                    res.render('team/editteam',{title: 'team ',team: result[0]});
 
 
         }
@@ -61,8 +69,16 @@ teamController.update=function(req,res){
     req.assert('pays', 'pays is required').notEmpty();
     req.assert('stade', 'stade is required').notEmpty();
 
-        req.flash('error', err_msg);
-        res.redirect('/team/edit/'+teamId);
+
+        var newTeam = {
+            nom: req.sanitize('nom').escape().trim(),
+            pays: req.sanitize('pays').escape().trim(),
+            stade: req.sanitize('stade').escape().trim()
+        }
+        teamModel.updateTeam(teamId,newTeam, function (result) {
+
+            res.redirect('/team');
+        });
 
 }
 teamController.delete=function(req,res){
@@ -70,10 +86,8 @@ teamController.delete=function(req,res){
     console.log("DELEEEETION :   "+teamId);
     teamModel.deleteTeam(teamId,function(result){
         if(result==null){
-            req.flash('error','Sorry the team cannot be deleted !!');
             res.redirect('/team');
         }else{
-            req.flash('success', 'team Information deleted successfully.');
             res.redirect('/team');
         }
     })

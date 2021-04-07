@@ -1,0 +1,44 @@
+<%- include ("../layouts/footer.ejs") %>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel panel-default">
+            <div class="panel-heading"><%= title %></div>
+            <div class="panel-body">
+                <%console.log(team.idTeam)%>
+                <form class="form-horizontal" action="/team/update/<%= team.idTeam %>" method="POST">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="nom">Nom Team</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="nom" id="nom" placeholder="Entrez nom Team" value="<%= team.nom %>">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="pays">Pays Team</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="pays" id="pays" placeholder="Entrez  Pays" value="<%= team.pays %>">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="age">Stade Team</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="stade" id="stade" placeholder="Entrez le stade " value="<%= team.stade %>">
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-primary">modifier</button>
+                            <a href="/team"><button type="button" class="btn btn-default">Annuler</button></a>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<%- include ("../layouts/footer.ejs") %>

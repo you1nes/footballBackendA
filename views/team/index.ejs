@@ -1,0 +1,55 @@
+<%- include  ("../layouts/footer.ejs")  %>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel panel-default">
+            <div class="panel-heading"><%= title %><a href="/team/add" class= "pull-right"><i class="fa fa-plus fa-fw"></i>Inscrire une team</a></div>
+            <div class="panel-body">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Nom de la team</th>
+                        <th>pays</th>
+                        <th>stade</th>
+
+
+                        <th>EDIT</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <% if (teams) { %>
+                        <% teams.forEach(function(team){ %>
+                            <tr>
+                                <td>
+                                    <%= team.nom %>
+                                </td>
+                                <td>
+                                    <%= team.pays %>
+                                </td>
+                                <td>
+                                    <%= team.stade %>
+                                </td>
+
+
+                                <td>
+                                    <% console.log("ID:"+team.idTeam); %>
+                                    <a href="/team/edit/<%= team.idTeam %>"><i class="fa fa-edit"></i></a>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <div class="col-sm-offset-2 col-sm-10">
+                                            <a href="/team/delete/<%= team.idTeam %>"><button type="button" class="btn btn-default">delete</button></a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        <% }) %>
+                    <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<%- include  ("../layouts/footer.ejs")  %>
