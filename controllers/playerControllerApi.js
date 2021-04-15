@@ -125,7 +125,7 @@ playerControllerApi.delete=function(req,res){
         if(result==null){
             res.json({'message':'error for delete'});
         }else{
-            res.redirect({'message':'Successsss your player is deleted'});
+            res.json({'message':'Successsss your player is deleted'});
         }
     })
 }
