@@ -31,7 +31,7 @@ routes.post('/team/update/(:idTeam)',teamController.update);
 routes.get('/api/players',playerControllerApi.index);
 routes.post('/api/players',playerControllerApi.save);
 routes.put('/api/players/(:idPlayer)',playerControllerApi.update);
-routes.delete('/api/animals/(:idPlayer)',playerControllerApi.delete);
+routes.delete('/api/players/(:idPlayer)',playerControllerApi.delete);
 
 // API Team routes
 
