@@ -17,6 +17,7 @@ playerControllerApi.index=function(req,res,next){
     playerModel.getAllPlayer(function (err, players) {
         if(err){
             throw err;
+            res.status(400).json({'error':err});
         }else{
             res.json({players:players});
         }
@@ -53,7 +54,6 @@ playerControllerApi.save=function(req,res){
             }else{
                 res.status(200).json({'message':'success'});
             }
-            res.json({'message':'successssss!!!'});
         });
 
 
@@ -70,7 +70,7 @@ playerControllerApi.edit=function(req,res){
     playerModel.findPlayerById(playerId,function(result){
         console.log(result[0]);
         if(result==null){
-            res.json({'messge': 'player updated succesfully '});
+            res.json({'message': 'player updated succesfully '});
         } else {
             res.json({'message': 'Error with updating player '});
         }

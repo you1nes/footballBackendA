@@ -32,16 +32,8 @@ app.use('/',routes);
 app.use(express.json());
 
 
-app.use(methodOverride(function (req, res) {
-    if (req.body && typeof req.body === 'object' && '_method' in req.body) {
-        var method = req.body._method
-        delete req.body._method
-        return method
-    }
-}));
-// error handler
 
-app.use(flash());
+
 
 app.listen(8080, function () {
     console.log("App started at port 3000!!");

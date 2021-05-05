@@ -46,7 +46,6 @@ teamControllerApi.save=function(req,res){
         }else{
             res.status(200).json({'message':'success'});
         }
-        res.json({'message':'successssss!!!'});
 
 });
 

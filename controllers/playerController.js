@@ -13,7 +13,6 @@ playerController.add = function(req, res, next) {
 
 playerController.index=function(req,res,next){
     playerModel.getAllPlayer(function(err,players){
-        var cool;
 
         if(err){
             throw err;
